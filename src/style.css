@@ -1,0 +1,32 @@
+.tribe-events-calendar-list__event-row .progress-bar-container,
+.tribe-events-calendar-day__event .progress-bar-container {
+	display: flex;
+	align-items: baseline;
+	margin-top: 16px;
+}
+
+.progress-bar-container .progress-bar-container__background {
+	background-color: #ddd;
+	height: 7px;
+	border-radius: 4px;
+	flex-grow: 2;
+	margin: 0 8px;
+}
+
+.progress-bar-container .progress-bar-container__progressbar {
+	height: 5px;
+	margin-top: 1px;
+	margin-right: -1px;
+	background-color: #334aff;
+	float: left;
+}
+
+.progress-bar-container .progress-bar-container__ball {
+	height: 7px;
+	border-radius: 50%;
+	background-color: #334aff;
+	width: 5px;
+	float: left;
+	padding: 5px;
+	margin-top: -2px;
+}
