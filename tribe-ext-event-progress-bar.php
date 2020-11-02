@@ -4,7 +4,7 @@
  * Plugin URI:        https://theeventscalendar.com/extensions/event-progress-bar/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-event-progress-bar
  * Description:       This experimental extension adds a progress bar below the event description in list view and day view (V2).
- * Version:           0.1.0
+ * Version:           1.0.0
  * Extension Class:   Tribe\Extensions\EventProgressBar\Main
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
