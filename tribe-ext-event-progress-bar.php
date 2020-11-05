@@ -38,7 +38,7 @@ if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
 if (
 	class_exists( 'Tribe__Extension' )
-	&& ! class_exists( NS . 'Main' )
+	//&& ! class_exists( NS . 'Main' )
 ) {
 	/**
 	 * Extension main class, class begins loading on init() function.
@@ -99,28 +99,8 @@ if (
 
 			$event = tribe_get_event( get_the_ID() );
 
-			/**
-			 * Leaving here for testing purposes.
-			 *
-			 * @todo Remove before publishing
-			 */
-			/*
-			echo date('Z' );
-			echo '<br>';
-			echo strtotime('now');
-			echo '<br>';
-			echo strtotime( $event->end_date_utc );
-			echo '<br>';
-			echo strtotime('now') - strtotime( $event->end_date_utc );
-			echo '<br>';
-			echo $event->end_date_utc;*/
-
 			// Bail if event (start) is not in the past, so event hasn't started yet
 			if ( ! $event->is_past ) {
-				/* ?>
-				<div>Event is coming.</div>
-				<?php */
-
 				return;
 			}
 
@@ -130,9 +110,6 @@ if (
 			 * `strtotime( 'now' )` will use the server timezone, which should be UTC.
 			 */
 			if ( strtotime( 'now' ) > strtotime( $event->end_date_utc ) ) {
-				/* ?>
-				<div>Event has passed.</div>
-				<?php */
 				return;
 			}
 
@@ -151,13 +128,16 @@ if (
 				</div>
 				<div class="progress-bar-container__timeleft">
 					<?php
+					// Due to translations, we should have all text here (translated in php) and hide/show things as needed instead of changing text via javascript.
 					printf(
 						// translators: %1$s: The remaining time with markup, %2$s: Closing </span>.
 						esc_html_x( '%1$s left.%2$s', 'The remaining time of a live event.', 'tribe-ext-event-progress-bar' ),
 						'<span class="progress-bar-container__timeleft-time"></span> <span class="progress-bar-container__timeleft-string">',
 						'</span>'
 					);
+					// Below - suggested structure for the "event is over" piece to show.
 					?>
+					<span class="progress-bar-container__timeleft--over"><?php esc_html_x( 'Event is over.', 'Label of live event when over.', 'tribe-ext-event-progress-bar' ); ?></span>
 				</div>
 			</div>
 
@@ -265,4 +245,3 @@ if (
 
 	}
 }
-

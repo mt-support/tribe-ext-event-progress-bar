@@ -26,9 +26,9 @@ function doProgress() {
 	var offset = tzOffset * 60 * 1000;
 
 	// Go through all the events that are running at the moment.
-	for( let i = 0; i < events.length; i++ ) {
-		var startDate = new Date( events[ i ].children[ 0 ].dataset.startDate ).getTime();
-		var endDate = new Date( events[ i ].children[ 0 ].dataset.endDate ).getTime();
+	Array.prototype.forEach.call(events, function( event ) {
+		var startDate = new Date( event.querySelector( '.progress-bar-container__live' ).dataset.startDate ).getTime();
+		var endDate = new Date( event.querySelector( '.progress-bar-container__live' ).dataset.endDate ).getTime();
 
 		var fullTime = endDate - startDate;
 		var timeLeft = endDate - (now + offset);
@@ -36,28 +36,30 @@ function doProgress() {
 
 		// If the count down is over, write some text and get out of the loop.
 		if ( timeLeft < 0 ) {
-			events[ i ].children[ 0 ].innerHTML = "Event";
-			events[ i ].children[ 2 ].children[ 0 ].innerHTML = "is over.";
-			events[ i ].classList.remove( "progress-bar-container__on" );
-			continue;
+			event.querySelector( '.progress-bar-container__live' ).innerHTML = "Event";
+			// Instead of changing the text here (hardcoded in English) add a span in tribe-ext-event-progress-bar.php and hide/show the appropriate pieces.
+			event.querySelector( '.progress-bar-container__timeleft .progress-bar-container__timeleft-time' ).innerHTML = "is over.";
+			event.classList.remove( "progress-bar-container__on" );
+		} else {
+			// Time calculations for days, hours, minutes and seconds
+			var second = 1000;
+			var minute = second * 60; // (1000 * 60)
+			var hour = minute * 60; // (1000 * 60 * 60)
+			var day = hour * 24; // (1000 * 60 * 60 * 24)
+
+			var days = Math.floor( timeLeft / day );
+			var hours = Math.floor( (timeLeft % day) / hour ).toString(10);
+			var minutes = Math.floor( (timeLeft % hour) / minute ).toString(10);
+			var seconds = Math.floor( (timeLeft % minute) / second ).toString(10);
+
+			// Output the result in an element
+			var timeString = '';
+			if ( days > 0 ) { timeString += days + 'd '; }
+
+			timeString += hours.padStart( 2, 0 ) + ":" + minutes.padStart( 2, 0 ) + ":" + seconds.padStart( 2, 0 );
+
+			event.querySelector( '.progress-bar-container__timeleft .progress-bar-container__timeleft-time' ).innerHTML = timeString;
+			event.querySelector( '.progress-bar-container__background .progress-bar-container__progressbar').style.width = 'calc(' + percent + '% - 9px)';
 		}
-
-		// Time calculations for days, hours, minutes and seconds
-		var days = Math.floor( timeLeft / (1000 * 60 * 60 * 24) );
-		var hours = Math.floor( (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) );
-		var minutes = Math.floor( (timeLeft % (1000 * 60 * 60)) / (1000 * 60) );
-		var seconds = Math.floor( (timeLeft % (1000 * 60)) / 1000 );
-
-		// Output the result in an element
-		var timeString = '';
-		if ( days > 0 ) timeString += days + 'd ';
-		if ( hours < 10 ) hours = '0' + hours;
-		if ( minutes < 10 ) minutes = '0' + minutes;
-		if ( seconds < 10 ) seconds = '0' + seconds;
-		timeString += hours + ":" + minutes + ":" + seconds;
-
-		events[ i ].children[ 2 ].children[ 0 ].innerHTML = timeString;
-		events[ i ].children[ 1 ].children[ 0 ].style.width = 'calc(' + percent + '% - 9px)';
-
-	}
+	});
 }
