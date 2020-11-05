@@ -137,9 +137,11 @@ if (
 					<div class="progress-bar-container__ball"></div>
 				</div>
 				<div class="progress-bar-container__timeleft">
+					<?php /* Translators: The label for days when the event is still running for more than a day. E.g. 1d 12:34:56 */ ?>
+					<span class="progress-bar-container__timeleft-day"></span><span class="progress-bar-container__timeleft-day-label"><?php echo esc_html_x( 'd', 'Label of the day after the progress bar when event is live.', 'tribe-ext-event-progress-bar' ); ?></span>
 					<?php
 					printf(
-						// translators: %1$s: The remaining time with markup, %2$s: Closing </span>.
+					// translators: %1$s: The remaining time with markup, %2$s: Closing </span>.
 						esc_html_x( '%1$s left%2$s', 'The remaining time of a live event.', 'tribe-ext-event-progress-bar' ),
 						'<span class="progress-bar-container__timeleft-time"></span> <span class="progress-bar-container__timeleft-string">',
 						'</span>'

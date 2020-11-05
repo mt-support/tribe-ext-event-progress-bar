@@ -56,7 +56,13 @@ function doProgress() {
 
 			// Output the result in an element
 			var timeString = '';
-			if ( days > 0 ) { timeString += days + 'd '; }
+			
+			if ( days > 0 ) {
+				event.querySelector( '.progress-bar-container__timeleft-day' ).innerHTML = days;
+			} else {
+				event.querySelector( '.progress-bar-container__timeleft-day' ).classList.add('tribe-common-a11y-hidden');
+				event.querySelector( '.progress-bar-container__timeleft-day-label' ).classList.add('tribe-common-a11y-hidden');
+			}
 
 			timeString += hours.padStart( 2, 0 ) + ":" + minutes.padStart( 2, 0 ) + ":" + seconds.padStart( 2, 0 );
 
