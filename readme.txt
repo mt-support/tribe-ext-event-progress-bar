@@ -33,7 +33,7 @@ We're always interested in your feedback and our [Help Desk](https://support.the
 
 = [1.0.0] 2020-11-09 =
 
-* First release
+* Public release
 
 = [0.1.0] 2020-10-30 =
 
