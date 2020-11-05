@@ -34,18 +34,20 @@ function doProgress() {
 		var timeLeft = endDate - (now + offset);
 		var percent = (fullTime - timeLeft) / fullTime * 100;
 
-		// If the count down is over, write some text and get out of the loop.
 		if ( timeLeft < 0 ) {
-			event.querySelector( '.progress-bar-container__live' ).innerHTML = "Event";
-			// Instead of changing the text here (hardcoded in English) add a span in tribe-ext-event-progress-bar.php and hide/show the appropriate pieces.
-			event.querySelector( '.progress-bar-container__timeleft .progress-bar-container__timeleft-time' ).innerHTML = "is over.";
+			// If the countdown is over change the labels.
+			event.querySelector( '.progress-bar-container__live-text' ).classList.add('tribe-common-a11y-hidden');
+			event.querySelector( '.progress-bar-container__live-text--over' ).classList.remove('tribe-common-a11y-hidden');
+			event.querySelector( '.progress-bar-container__timeleft-time' ).classList.add('tribe-common-a11y-hidden');
+			event.querySelector( '.progress-bar-container__timeleft-string' ).classList.add('tribe-common-a11y-hidden');
+			event.querySelector( '.progress-bar-container__timeleft--over' ).classList.remove('tribe-common-a11y-hidden');
 			event.classList.remove( "progress-bar-container__on" );
 		} else {
 			// Time calculations for days, hours, minutes and seconds
 			var second = 1000;
 			var minute = second * 60; // (1000 * 60)
-			var hour = minute * 60; // (1000 * 60 * 60)
-			var day = hour * 24; // (1000 * 60 * 60 * 24)
+			var hour = minute * 60;   // (1000 * 60 * 60)
+			var day = hour * 24;      // (1000 * 60 * 60 * 24)
 
 			var days = Math.floor( timeLeft / day );
 			var hours = Math.floor( (timeLeft % day) / hour ).toString(10);
