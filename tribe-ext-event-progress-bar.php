@@ -119,7 +119,7 @@ if (
 			?>
 
 			<div class="progress-bar-container progress-bar-container__on tribe-common-b2">
-				<div class="progress-bar-container__live" data-start-date="<?php echo $start_date ?>" data-end-date="<?php echo $end_date ?>">
+				<div class="progress-bar-container__live" data-start-date="<?php esc_attr_e( $start_date ) ?>" data-end-date="<?php esc_attr_e( $end_date ) ?>">
 					<span class="progress-bar-container__live-text">
 						<?php
 						echo esc_html_x( 'Live now', 'Label before the progress bar when event is live.', 'tribe-ext-event-progress-bar' );
@@ -142,7 +142,7 @@ if (
 					<?php
 					printf(
 					// translators: %1$s: The remaining time with markup, %2$s: Closing </span>.
-						esc_html_x( '%1$s left%2$s', 'The remaining time of a live event.', 'tribe-ext-event-progress-bar' ),
+						esc_html_x( '%1$s left%2$s', 'The remaining time of a live event, including HTML.', 'tribe-ext-event-progress-bar' ),
 						'<span class="progress-bar-container__timeleft-time"></span> <span class="progress-bar-container__timeleft-string">',
 						'</span>'
 					);
