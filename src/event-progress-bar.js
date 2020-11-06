@@ -24,6 +24,12 @@ function doProgress() {
 	var tzOffset = d.getTimezoneOffset();
 	var offset = tzOffset * 1000 * 60;
 
+	// Time calculations for days, hours, minutes and seconds
+	var second = 1000;
+	var minute = second * 60; // (1000 * 60)
+	var hour = minute * 60;   // (1000 * 60 * 60)
+	var day = hour * 24;      // (1000 * 60 * 60 * 24)
+
 	// Go through all the events that are running at the moment.
 	Array.prototype.forEach.call( events, function( event ) {
 		var startDate = new Date( event.querySelector( '.progress-bar-container__live' ).dataset.startDate ).getTime();
@@ -42,12 +48,6 @@ function doProgress() {
 			event.querySelector( '.progress-bar-container__timeleft--over' ).classList.remove( 'tribe-common-a11y-hidden' );
 			event.classList.remove( "progress-bar-container__on" );
 		} else {
-			// Time calculations for days, hours, minutes and seconds
-			var second = 1000;
-			var minute = second * 60; // (1000 * 60)
-			var hour = minute * 60;   // (1000 * 60 * 60)
-			var day = hour * 24;      // (1000 * 60 * 60 * 24)
-
 			var days = Math.floor( timeLeft / day );
 			var hours = Math.floor( (timeLeft % day) / hour ).toString( 10 );
 			var minutes = Math.floor( (timeLeft % hour) / minute ).toString( 10 );
