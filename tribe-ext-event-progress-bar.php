@@ -47,6 +47,7 @@ if (
 
 		/**
 		 * Setup the Extension's properties.
+		 * The extension works with updated (V2) design only and thus requires TEC 5.0.
 		 *
 		 * This always executes even if the required plugins are not present.
 		 */
@@ -150,7 +151,7 @@ if (
 		 * @return bool
 		 */
 		private function php_version_check() {
-			$php_required_version = '7.0';
+			$php_required_version = '5.6';
 
 			if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
 				if ( is_admin() && current_user_can( 'activate_plugins' ) ) {
