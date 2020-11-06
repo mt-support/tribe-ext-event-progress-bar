@@ -42,7 +42,6 @@ function doProgress() {
 		if ( timeLeft < 0 ) {
 			// If the countdown is over change the labels.
 			event.querySelector( '.progress-bar-container__live-text' ).classList.add( 'tribe-common-a11y-hidden' );
-			event.querySelector( '.progress-bar-container__live-text--over' ).classList.remove( 'tribe-common-a11y-hidden' );
 			event.querySelector( '.progress-bar-container__timeleft-time' ).classList.add( 'tribe-common-a11y-hidden' );
 			event.querySelector( '.progress-bar-container__timeleft-string' ).classList.add( 'tribe-common-a11y-hidden' );
 			event.querySelector( '.progress-bar-container__timeleft--over' ).classList.remove( 'tribe-common-a11y-hidden' );

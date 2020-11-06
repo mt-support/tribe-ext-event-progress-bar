@@ -111,12 +111,6 @@ if (
 						echo esc_html_x( 'Live now', 'Label before the progress bar when event is live.', 'tribe-ext-event-progress-bar' );
 						?>
 					</span>
-					<span class="progress-bar-container__live-text--over tribe-common-a11y-hidden">
-						<?php
-						// Translators: This is the beginning of the string "Events it over."
-						echo esc_html_x( 'Event', 'Label before the progress bar when event is over.', 'tribe-ext-event-progress-bar' );
-						?>
-					</span>
 				</div>
 				<div class="progress-bar-container__background">
 					<div class="progress-bar-container__progressbar"></div>
@@ -135,8 +129,11 @@ if (
 					?>
 					<span class="progress-bar-container__timeleft--over tribe-common-a11y-hidden">
 						<?php
-						// Translators: This is the end of the string "Event is over."
-						echo esc_html_x( 'is over.', 'Label after the progress bar when the event is over.', 'tribe-ext-event-progress-bar' );
+						// Translators: %s is the single label of 'Event'.
+						printf(
+							esc_html_x( '%s is over.', 'Label after the progress bar when the event is over.', 'tribe-ext-event-progress-bar' ),
+							tribe_get_event_label_singular()
+						);
 						?>
 					</span>
 				</div>
