@@ -1,5 +1,5 @@
 // Update the count down every 1 second
-var x = setInterval( doProgress, 1000 );
+var tribeEventProgressBar = setInterval( doProgress, 1000 );
 
 function doProgress() {
 
@@ -15,7 +15,6 @@ function doProgress() {
 
 	// Bail if there are no live events.
 	if ( events.length <= 0 ) {
-		//clearInterval( x );
 		return;
 	}
 
@@ -23,7 +22,7 @@ function doProgress() {
 	var d = new Date();
 	var now = d.getTime();
 	var tzOffset = d.getTimezoneOffset();
-	var offset = tzOffset * 60 * 1000;
+	var offset = tzOffset * 1000 * 60;
 
 	// Go through all the events that are running at the moment.
 	Array.prototype.forEach.call( events, function( event ) {
