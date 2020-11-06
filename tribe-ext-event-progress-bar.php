@@ -46,20 +46,6 @@ if (
 	class Main extends Tribe__Extension {
 
 		/**
-		 * Is Events Calendar PRO active. If yes, we will add some extra functionality.
-		 *
-		 * @return bool
-		 */
-		public $ecp_active = false;
-
-		/**
-		 * Is Event Tickets active. If yes, we will add some extra functionality.
-		 *
-		 * @return bool
-		 */
-		public $et_active = false;
-
-		/**
 		 * Setup the Extension's properties.
 		 *
 		 * This always executes even if the required plugins are not present.
@@ -96,7 +82,6 @@ if (
 		 * @param $template
 		 */
 		public function progressbar( $file, $name, $template ) {
-
 			$event = tribe_get_event();
 
 			// Bail if event (start) is not in the past, so event hasn't started yet
