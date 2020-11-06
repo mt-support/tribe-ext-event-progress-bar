@@ -38,7 +38,7 @@ if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
 if (
 	class_exists( 'Tribe__Extension' )
-	//&& ! class_exists( NS . 'Main' )
+	&& ! class_exists( NS . 'Main' )
 ) {
 	/**
 	 * Extension main class, class begins loading on init() function.
