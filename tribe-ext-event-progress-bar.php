@@ -97,7 +97,7 @@ if (
 		 */
 		public function progressbar( $file, $name, $template ) {
 
-			$event = tribe_get_event( get_the_ID() );
+			$event = tribe_get_event();
 
 			// Bail if event (start) is not in the past, so event hasn't started yet
 			if ( ! $event->is_past ) {
