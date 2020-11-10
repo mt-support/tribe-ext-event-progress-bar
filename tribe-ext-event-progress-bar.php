@@ -46,21 +46,8 @@ if (
 	class Main extends Tribe__Extension {
 
 		/**
-		 * Is Events Calendar PRO active. If yes, we will add some extra functionality.
-		 *
-		 * @return bool
-		 */
-		public $ecp_active = false;
-
-		/**
-		 * Is Event Tickets active. If yes, we will add some extra functionality.
-		 *
-		 * @return bool
-		 */
-		public $et_active = false;
-
-		/**
 		 * Setup the Extension's properties.
+		 * The extension works with updated (V2) design only and thus requires TEC 5.0.
 		 *
 		 * This always executes even if the required plugins are not present.
 		 */
@@ -96,31 +83,10 @@ if (
 		 * @param $template
 		 */
 		public function progressbar( $file, $name, $template ) {
-
-			$event = tribe_get_event( get_the_ID() );
-
-			/**
-			 * Leaving here for testing purposes.
-			 *
-			 * @todo Remove before publishing
-			 */
-			/*
-			echo date('Z' );
-			echo '<br>';
-			echo strtotime('now');
-			echo '<br>';
-			echo strtotime( $event->end_date_utc );
-			echo '<br>';
-			echo strtotime('now') - strtotime( $event->end_date_utc );
-			echo '<br>';
-			echo $event->end_date_utc;*/
+			$event = tribe_get_event();
 
 			// Bail if event (start) is not in the past, so event hasn't started yet
 			if ( ! $event->is_past ) {
-				/* ?>
-				<div>Event is coming.</div>
-				<?php */
-
 				return;
 			}
 
@@ -130,9 +96,6 @@ if (
 			 * `strtotime( 'now' )` will use the server timezone, which should be UTC.
 			 */
 			if ( strtotime( 'now' ) > strtotime( $event->end_date_utc ) ) {
-				/* ?>
-				<div>Event has passed.</div>
-				<?php */
 				return;
 			}
 
@@ -142,22 +105,37 @@ if (
 			?>
 
 			<div class="progress-bar-container progress-bar-container__on tribe-common-b2">
-				<div class="progress-bar-container__live" data-start-date="<?php echo $start_date ?>" data-end-date="<?php echo $end_date ?>">
-					<?php echo esc_html_x( 'Live now', 'Label of live event before the progress bar.', 'tribe-ext-event-progress-bar' ); ?>
+				<div class="progress-bar-container__live" data-start-date="<?php esc_attr_e( $start_date ) ?>" data-end-date="<?php esc_attr_e( $end_date ) ?>">
+					<span class="progress-bar-container__live-text">
+						<?php
+						echo esc_html_x( 'Live now', 'Label before the progress bar when event is live.', 'tribe-ext-event-progress-bar' );
+						?>
+					</span>
 				</div>
 				<div class="progress-bar-container__background">
 					<div class="progress-bar-container__progressbar"></div>
 					<div class="progress-bar-container__ball"></div>
 				</div>
 				<div class="progress-bar-container__timeleft">
+					<?php /* Translators: The label for days when the event is still running for more than a day. E.g. 1d 12:34:56 */ ?>
+					<span class="progress-bar-container__timeleft-day"></span><span class="progress-bar-container__timeleft-day-label"><?php echo esc_html_x( 'd', 'Label of the day after the progress bar when event is live.', 'tribe-ext-event-progress-bar' ); ?></span>
 					<?php
 					printf(
-						// translators: %1$s: The remaining time with markup, %2$s: Closing </span>.
-						esc_html_x( '%1$s left.%2$s', 'The remaining time of a live event.', 'tribe-ext-event-progress-bar' ),
+					// translators: %1$s: The remaining time with markup, %2$s: Closing </span>.
+						esc_html_x( '%1$s left%2$s', 'The remaining time of a live event, including HTML.', 'tribe-ext-event-progress-bar' ),
 						'<span class="progress-bar-container__timeleft-time"></span> <span class="progress-bar-container__timeleft-string">',
 						'</span>'
 					);
 					?>
+					<span class="progress-bar-container__timeleft--over tribe-common-a11y-hidden">
+						<?php
+						// Translators: %s is the single label of 'Event'.
+						printf(
+							esc_html_x( '%s is over.', 'Label after the progress bar when the event is over.', 'tribe-ext-event-progress-bar' ),
+							tribe_get_event_label_singular()
+						);
+						?>
+					</span>
 				</div>
 			</div>
 
@@ -170,7 +148,7 @@ if (
 		 * @return bool
 		 */
 		private function php_version_check() {
-			$php_required_version = '7.0';
+			$php_required_version = '5.6';
 
 			if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
 				if ( is_admin() && current_user_can( 'activate_plugins' ) ) {
@@ -265,4 +243,3 @@ if (
 
 	}
 }
-

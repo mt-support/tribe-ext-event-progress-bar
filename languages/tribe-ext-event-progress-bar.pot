@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: The Events Calendar Extension: Event Progress Bar\n"
-"POT-Creation-Date: 2020-11-02 10:36+0100\n"
+"POT-Creation-Date: 2020-11-06 10:55+0100\n"
 "PO-Revision-Date: 2020-11-02 10:10+0100\n"
 "Language-Team: Modern Tribe, Inc. <support@theeventscalendar.com>\n"
 "MIME-Version: 1.0\n"
@@ -15,41 +15,57 @@ msgstr ""
 "X-Poedit-WPHeader: tribe-ext-event-progress-bar.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: tribe-ext-event-progress-bar.php:146
-msgctxt "Label of live event before the progress bar."
+#: tribe-ext-event-progress-bar.php:111
+msgctxt "Label before the progress bar when event is live."
 msgid "Live now"
 msgstr ""
 
-#. translators: %1$s: The remaining time with markup, %2$s: Closing </span>.
-#: tribe-ext-event-progress-bar.php:156
-#, php-format
-msgctxt "The remaining time of a live event."
-msgid "%1$s left.%2$s"
+#: tribe-ext-event-progress-bar.php:117
+msgctxt "Label before the progress bar when event is over."
+msgid "Event"
 msgstr ""
 
-#: tribe-ext-event-progress-bar.php:180
+#: tribe-ext-event-progress-bar.php:127
+msgctxt "Label of the day after the progress bar when event is live."
+msgid "d"
+msgstr ""
+
+#. translators: %1$s: The remaining time with markup, %2$s: Closing </span>.
+#: tribe-ext-event-progress-bar.php:131
+#, php-format
+msgctxt "The remaining time of a live event, including HTML."
+msgid "%1$s left%2$s"
+msgstr ""
+
+#: tribe-ext-event-progress-bar.php:139
+msgctxt "Label after the progress bar when the event is over."
+msgid "is over."
+msgstr ""
+
+#: tribe-ext-event-progress-bar.php:161
 #, php-format
 msgid ""
 "%s requires PHP version %s or newer to work. Please contact your website "
 "host and inquire about updating PHP."
 msgstr ""
 
-#: tribe-ext-event-progress-bar.php:235
+#: tribe-ext-event-progress-bar.php:216
 msgctxt "name of view"
 msgid "Legacy Views"
 msgstr ""
 
-#: tribe-ext-event-progress-bar.php:237
+#: tribe-ext-event-progress-bar.php:218
 msgctxt "name of view"
 msgid "Updated (V2) Views"
 msgstr ""
 
-#: tribe-ext-event-progress-bar.php:249
+#: tribe-ext-event-progress-bar.php:230
 #, php-format
 msgid ""
 "%1$s requires the \"%2$s\" so this extension's code will not run until this "
@@ -68,7 +84,7 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "This experimental extension adds a progress bar below the event description "
-"in list view (V2)."
+"in list view and day view (V2)."
 msgstr ""
 
 #. Author of the plugin/theme

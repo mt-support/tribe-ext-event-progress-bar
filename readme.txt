@@ -3,8 +3,8 @@ Contributors: ModernTribe
 Donate link: http://m.tri.be/29
 Tags: events, calendar
 Requires at least: 5.0
-Tested up to: 5.5.2
-Requires PHP: 7.0
+Tested up to: 5.5.3
+Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -33,7 +33,7 @@ We're always interested in your feedback and our [Help Desk](https://support.the
 
 = [1.0.0] 2020-11-09 =
 
-* First release
+* Public release
 
 = [0.1.0] 2020-10-30 =
 
