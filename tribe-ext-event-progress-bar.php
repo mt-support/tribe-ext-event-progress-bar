@@ -70,8 +70,8 @@ if (
 				return;
 			}
 
-			add_action( 'tribe_template_after_include:events/list/event/description', [ $this, 'progressbar' ], 10, 3 );
-			add_action( 'tribe_template_after_include:events/day/event/description', [ $this, 'progressbar' ], 10, 3 );
+			add_action( 'tribe_template_after_include:events/v2/list/event/description', [ $this, 'progressbar' ], 10, 3 );
+			add_action( 'tribe_template_after_include:events/v2/day/event/description', [ $this, 'progressbar' ], 10, 3 );
 			add_action( 'wp_enqueue_scripts', [ $this, 'safely_add_scripts' ] );
 		}
 
