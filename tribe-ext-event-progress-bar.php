@@ -3,11 +3,11 @@
  * Plugin Name:       The Events Calendar Extension: Event Progress Bar
  * Plugin URI:        https://theeventscalendar.com/extensions/event-progress-bar/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-event-progress-bar
- * Description:       This experimental extension adds a progress bar below the event description in list view and day view (V2).
- * Version:           1.0.0
+ * Description:       The extension adds a progress bar below the event description in list view and day view, when using the updated (v2) calendar design.
+ * Version:           1.0.1
  * Extension Class:   Tribe\Extensions\EventProgressBar\Main
- * Author:            Modern Tribe, Inc.
- * Author URI:        http://m.tri.be/1971
+ * Author:            The Events Calendar
+ * Author URI:        https://evnt.is/1971
  * License:           GPL version 3 or any later version
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       tribe-ext-event-progress-bar
@@ -70,8 +70,8 @@ if (
 				return;
 			}
 
-			add_action( 'tribe_template_after_include:events/list/event/description', [ $this, 'progressbar' ], 10, 3 );
-			add_action( 'tribe_template_after_include:events/day/event/description', [ $this, 'progressbar' ], 10, 3 );
+			add_action( 'tribe_template_after_include:events/v2/list/event/description', [ $this, 'progressbar' ], 10, 3 );
+			add_action( 'tribe_template_after_include:events/v2/day/event/description', [ $this, 'progressbar' ], 10, 3 );
 			add_action( 'wp_enqueue_scripts', [ $this, 'safely_add_scripts' ] );
 		}
 
