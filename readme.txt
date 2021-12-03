@@ -31,7 +31,7 @@ We're always interested in your feedback and our [Help Desk](https://support.the
 
 == Changelog ==
 
-= [1.0.1] 2020-12-02 =
+= [1.0.1] 2021-12-02 =
 
 * Make sure the extension uses the correct action hook names for v2.
 
